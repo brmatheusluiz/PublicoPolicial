@@ -29,50 +29,35 @@ dados.teste$Mes<-as.factor(dados.teste$Mes)
 dados.teste$Ocorrencia<-as.numeric(dados.teste$Ocorrencia)
 dados.teste$Partido<-as.factor(dados.teste$Partido)
 
-#Filtra para trabalharmos com o estado do Alagoas
-dados.AL<-filter(dados.teste,UF=="Alagoas")
+#Filtra para trabalharmos com o estado do Acre
+dados.AC<-filter(dados.teste,UF=="Acre")
 
 #Crimes no ano  de 2019
-dados.AL %>%
+dados.AC %>%
   filter(Ano==2019) %>%
   group_by(TipoCrime) %>%
   count(TipoCrime,Quantidade=sum(Ocorrencia)) %>%
   ggplot()+
   geom_bar(aes(x=Quantidade,y=TipoCrime, fill = TipoCrime),stat='identity') +
-  ggtitle("Alagoas")
+  ggtitle("Acre")
 
 #Crimes no ano  de 2016
-dados.AL %>%
+dados.AC %>%
   filter(Ano==2016) %>%
   group_by(TipoCrime) %>%
   count(TipoCrime,Quantidade=sum(Ocorrencia)) %>%
   ggplot()+
-  geom_bar(aes(x=Quantidade,y=TipoCrime, fill = Quantidade),stat='identity') +
-  ggtitle("Alagoas")
-
-
-#Crimes no ano de 2018 por mês
-dados.AL %>%
-  filter(Ano==2018) %>%
-  group_by(Mes) %>%
-  summarise(Quantidade=sum(Ocorrencia)) %>%
-  ggplot()+
-  geom_bar(aes(x=Quantidade,y=Mes, fill = Quantidade),stat='identity') +
-  ggtitle("Quantidade de Ocorrencias Por Mês")
-
-#VERIFICAR QUAIS DIAS TEM O SAIDÃO DOS PRESOS
-#VERIFICAR TAMBÉM NO ANO DE 2018 QUANTOS PRESOS FORAM SOLTOS
-
-
+  geom_bar(aes(x=Quantidade,y=TipoCrime, fill = TipoCrime),stat='identity') +
+  ggtitle("Acre")
 
 
 #Coloca as ocorrencias por partido
-dados.AL.Partido<-dados.AL %>%
+dados.AC.Partido<-dados.AC %>%
   group_by(Ano,Partido) %>%
     summarise(Ocorrencias=sum(Ocorrencia))
 
 #Quantidade de Ocorrencias por Ano
-dados.AL.Partido %>%
+dados.AC.Partido %>%
   ggplot()+ geom_bar(aes(x=Ano,y=Ocorrencias, fill = Ano),stat='identity') +
   ggtitle("Quantidade de Ocorrencias por Ano")
 
