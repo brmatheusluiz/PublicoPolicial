@@ -32,8 +32,18 @@ dados.teste$Partido<-as.factor(dados.teste$Partido)
 #Filtra para trabalharmos com o estado do Acre
 dados.AC<-filter(dados.teste,UF=="Acre")
 
+#Crimes no ano  de 2019
 dados.AC %>%
   filter(Ano==2019) %>%
+  group_by(TipoCrime) %>%
+  count(TipoCrime,Quantidade=sum(Ocorrencia)) %>%
+  ggplot()+
+  geom_bar(aes(x=Quantidade,y=TipoCrime, fill = TipoCrime),stat='identity') +
+  ggtitle("Acre")
+
+#Crimes no ano  de 2016
+dados.AC %>%
+  filter(Ano==2016) %>%
   group_by(TipoCrime) %>%
   count(TipoCrime,Quantidade=sum(Ocorrencia)) %>%
   ggplot()+
@@ -48,7 +58,7 @@ dados.AC.Partido<-dados.AC %>%
 
 #Quantidade de Ocorrencias por Ano
 dados.AC.Partido %>%
-  ggplot()+ geom_bar(aes(x=Ano,y=Ocorrencias, fill = Ocorrencias),stat='identity') +
+  ggplot()+ geom_bar(aes(x=Ano,y=Ocorrencias, fill = Ano),stat='identity') +
   ggtitle("Quantidade de Ocorrencias por Ano")
 
 
