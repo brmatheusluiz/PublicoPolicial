@@ -22,13 +22,14 @@ dados.teste<-dados
 #Transformando em factor
 summary(dados.teste)
 
-#Transformar em factor e o numero de ocorrencias
+#Transformar em factor
 dados.teste$TipoCrime<-as.factor(dados.teste$TipoCrime)
 dados.teste$UF<-as.factor(dados.teste$UF)
 dados.teste$Mes<-as.factor(dados.teste$Mes)
 dados.teste$Ocorrencia<-as.numeric(dados.teste$Ocorrencia)
 dados.teste$Partido<-as.factor(dados.teste$Partido)
 
+#Filtra para trabalharmos com o estado do Acre
 dados.AC<-filter(dados.teste,UF=="Acre")
 
 dados.AC %>%
@@ -39,15 +40,16 @@ dados.AC %>%
   geom_bar(aes(x=Quantidade,y=TipoCrime, fill = TipoCrime),stat='identity') +
   ggtitle("Acre")
 
-names(dados.AC)
-
 
 #Coloca as ocorrencias por partido
 dados.AC.Partido<-dados.AC %>%
   group_by(Ano,Partido) %>%
     summarise(Ocorrencias=sum(Ocorrencia))
 
-dados.AC.Partido %>% mutate(percent=)
+#Quantidade de Ocorrencias por Ano
+dados.AC.Partido %>%
+  ggplot()+ geom_bar(aes(x=Ano,y=Ocorrencias, fill = Ocorrencias),stat='identity') +
+  ggtitle("Quantidade de Ocorrencias por Ano")
 
 
 
