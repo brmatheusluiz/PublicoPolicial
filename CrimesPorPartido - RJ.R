@@ -3,11 +3,14 @@ rm(list=ls())
 
 #Operacao da forca nacional em 2017
 #https://www.justica.gov.br/news/operacao-da-forca-nacional-no-rio-de-janeiro-e-estendida-por-30-dias
+#https://www.justica.gov.br/news/forca-nacional-vai-apoiar-acoes-de-seguranca-publica-no-rj-ate-final-do-ano
 #GLO no rio de janeiro
 #https://www.poder360.com.br/governo/rio-de-janeiro-e-estado-com-mais-glos-na-decada/
 #https://g1.globo.com/rio-de-janeiro/noticia/temer-assina-decreto-que-autoriza-forcas-armadas-a-atuarem-na-seguranca-publica-do-rio.ghtml
 #Intervenção federal no rio de Janeiro:
 #https://pt.wikipedia.org/wiki/Interven%C3%A7%C3%A3o_federal_no_Rio_de_Janeiro_em_2018
+#Força Nacional de Segurança
+#https://www.justica.gov.br/news/collective-nitf-content-1546630482.88
 
 library("ggplot2")
 library("dplyr")
