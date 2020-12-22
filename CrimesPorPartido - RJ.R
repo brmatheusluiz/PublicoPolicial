@@ -11,6 +11,8 @@ rm(list=ls())
 #https://pt.wikipedia.org/wiki/Interven%C3%A7%C3%A3o_federal_no_Rio_de_Janeiro_em_2018
 #Força Nacional de Segurança
 #https://www.justica.gov.br/news/collective-nitf-content-1546630482.88
+#Roubo de Carga
+##https://www.gov.br/mj/pt-br/assuntos/noticias/forca-nacional-e-policia-carioca-zeram-roubos-a-carga-no-rio-de-janeiro
 
 library("ggplot2")
 library("dplyr")
@@ -165,11 +167,15 @@ dados.RJ.Geral$Mes[dados.RJ.Geral$Mes=="dezembro"]<-"93 dezembro"
 dados.RJ.Geral<-dados.RJ.Geral[order(dados.RJ.Geral$Ano,dados.RJ.Geral$Mes),]
 
 
-
 ggplot(dados.RJ.Geral,aes(Mes,Ocorrencias,group=Ano)) + 
   geom_line(aes(colour=Ano)) +  
   ggtitle("Total de Ocorrencias por Mes") 
 
 
+#Filtrando tirando o ano de 2015
+dados.RJ.Geral.filter<- filter(dados.RJ.Geral,Ano %in% c("2016","2017","2018","2019"))
+ggplot(dados.RJ.Geral,aes(Mes,Ocorrencias,group=Ano)) + 
+  geom_line(aes(colour=Ano)) +  
+  ggtitle("Total de Ocorrencias por Mes") 
 
 
