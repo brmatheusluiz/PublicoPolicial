@@ -169,7 +169,8 @@ dados.RJ.Geral<-dados.RJ.Geral[order(dados.RJ.Geral$Ano,dados.RJ.Geral$Mes),]
 
 ggplot(dados.RJ.Geral,aes(Mes,Ocorrencias,group=Ano)) + 
   geom_line(aes(colour=Ano)) +  
-  ggtitle("Total de Ocorrencias por Mes") 
+  ggtitle("Total de Ocorrencias por Mes")  + 
+  theme_bw()
 
 
 #Filtrando tirando o ano de 2015
